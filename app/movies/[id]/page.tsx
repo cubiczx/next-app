@@ -1,7 +1,9 @@
 import Menu from "@/app/Menu";
 import { API_BASE_URL } from "@/lib/config";
 import { slugify } from "@/lib/utils";
-import GoHomeButton from "./GoHomeButton";
+import Image from "next/image";
+import Link from "next/link";
+import "./movie-detail.scss";
 
 type Movie = {
   id: string;
@@ -38,31 +40,58 @@ export default async function Movies({
 
   if (!movie) {
     return (
-      <div>
+      <div className="movie-detail-page">
         <Menu />
-        <h1 style={{ color: "red", textAlign: "center" }}>Movie not found</h1>
-        <div style={{ textAlign: "center", marginTop: "20px" }}>
-          <GoHomeButton />
+        <div className="error-container">
+          <h1>Movie not found</h1>
+          <p>The movie you&apos;re looking for doesn&apos;t exist.</p>
+          <Link href="/movies" className="back-button">Back to Movies</Link>
         </div>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className="movie-detail-page">
       <Menu />
-      <h1 style={{ color: "blue", textAlign: "center" }}>{movie.name}</h1>
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
-        <img src={movie.avatar} alt={movie.name} style={{ width: "200px", borderRadius: "10px" }} />
-      </div>
-      <p style={{ textAlign: "center", fontSize: "18px", marginTop: "20px" }}>
-        Created: {new Date(movie.createdAt).toLocaleDateString()}
-      </p>
-      <p style={{ textAlign: "center", fontSize: "14px", color: "#666" }}>
-        Slug: <strong>{id}</strong>
-      </p>
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
-        <GoHomeButton />
+      <div className="movie-hero">
+        <div className="movie-backdrop">
+          <Image
+            src={movie.avatar}
+            alt={movie.name}
+            fill
+            className="backdrop-image"
+          />
+          <div className="backdrop-overlay"></div>
+        </div>
+        <div className="movie-content">
+          <div className="movie-poster-container">
+            <Image
+              src={movie.avatar}
+              alt={movie.name}
+              width={300}
+              height={450}
+              className="movie-poster"
+            />
+          </div>
+          <div className="movie-details">
+            <h1 className="movie-title">{movie.name}</h1>
+            <div className="movie-meta">
+              <span className="release-year">{new Date(movie.createdAt).getFullYear()}</span>
+              <span className="separator">•</span>
+              <span className="release-date">{new Date(movie.createdAt).toLocaleDateString()}</span>
+            </div>
+            <div className="movie-actions">
+              <Link href="/movies" className="button button-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M19 12H5M12 19l-7-7 7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Back to Movies
+              </Link>
+              <Link href="/" className="button button-secondary">Home</Link>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,8 @@ import Menu from "../Menu";
 import Link from "next/link";
 import { API_BASE_URL } from "@/lib/config";
 import { slugify } from "@/lib/utils";
+import Image from "next/image";
+import "./movies.scss";
 
 type Movie = {
   id: string;
@@ -9,18 +11,6 @@ type Movie = {
   avatar: string;
   createdAt: string;
 };
-
-// Función que simula un fetch a una API
-async function getMoviesSimulated(): Promise<Movie[]> {
-  // Simular delay de red
-  await new Promise(resolve => setTimeout(resolve, 100));
-
-  return [
-    { id: "1", name: "Joker", avatar: "https://example.com/joker.jpg", createdAt: "2024-01-01" },
-    { id: "2", name: "Inception", avatar: "https://example.com/inception.jpg", createdAt: "2024-01-02" },
-    { id: "3", name: "Interstellar", avatar: "https://example.com/interstellar.jpg", createdAt: "2024-01-03" },
-  ];
-}
 
 // Función que hace fetch real de las películas
 async function getMovies(): Promise<Movie[]> {
@@ -34,24 +24,41 @@ async function getMovies(): Promise<Movie[]> {
 }
 
 export default async function Movies() {
-  // Obtener datos de forma asíncrona (simulado)
-  // const movies = await getMoviesSimulated();
-  // Obtener datos de forma asíncrona (real)
   const movies = await getMovies();
 
   return (
-    <div>
+    <div className="movies-page">
       <Menu />
-      <h1 style={{ color: "blue", textAlign: "center" }}>Movies Page</h1>
-      <ul>
-        {movies.map((movie: Movie) => (
-          <li key={movie.id}>
-            <Link href={`/movies/${slugify(movie.name)}`} style={{ margin: "0 10px" }}>
-              {movie.name}
+      <div className="container">
+        <div className="header">
+          <h1>Discover Movies</h1>
+          <p>Explore our collection of amazing films</p>
+        </div>
+        <div className="movies-grid">
+          {movies.map((movie: Movie) => (
+            <Link key={movie.id} href={`/movies/${slugify(movie.name)}`} className="movie-card">
+              <div className="movie-poster">
+                <Image
+                  src={movie.avatar}
+                  alt={movie.name}
+                  width={300}
+                  height={450}
+                  className="poster-image"
+                />
+                <div className="overlay">
+                  <span className="view-details">View Details</span>
+                </div>
+              </div>
+              <div className="movie-info">
+                <h3>{movie.name}</h3>
+                <p className="release-date">
+                  {new Date(movie.createdAt).getFullYear()}
+                </p>
+              </div>
             </Link>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
