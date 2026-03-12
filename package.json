@@ -2,6 +2,12 @@
   "name": "next-app",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Xavier Palacín Ayuso",
+    "email": "cubiczx@hotmail.com",
+    "url": "https://github.com/cubiczx"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +17,8 @@
   "dependencies": {
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "sass": "^1.98.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
