@@ -1,6 +1,7 @@
 import Menu from "../Menu";
 import Link from "next/link";
 import { API_BASE_URL } from "@/lib/config";
+import { slugify } from "@/lib/utils";
 
 type Movie = {
   id: string;
@@ -15,9 +16,9 @@ async function getMoviesSimulated(): Promise<Movie[]> {
   await new Promise(resolve => setTimeout(resolve, 100));
 
   return [
-    { id: "joker", name: "Joker", avatar: "https://example.com/joker.jpg", createdAt: "2024-01-01" },
-    { id: "inception", name: "Inception", avatar: "https://example.com/inception.jpg", createdAt: "2024-01-02" },
-    { id: "interstellar", name: "Interstellar", avatar: "https://example.com/interstellar.jpg", createdAt: "2024-01-03" },
+    { id: "1", name: "Joker", avatar: "https://example.com/joker.jpg", createdAt: "2024-01-01" },
+    { id: "2", name: "Inception", avatar: "https://example.com/inception.jpg", createdAt: "2024-01-02" },
+    { id: "3", name: "Interstellar", avatar: "https://example.com/interstellar.jpg", createdAt: "2024-01-03" },
   ];
 }
 
@@ -45,7 +46,7 @@ export default async function Movies() {
       <ul>
         {movies.map((movie: Movie) => (
           <li key={movie.id}>
-            <Link href={`/movies/${movie.id}`} style={{ margin: "0 10px" }}>
+            <Link href={`/movies/${slugify(movie.name)}`} style={{ margin: "0 10px" }}>
               {movie.name}
             </Link>
           </li>
