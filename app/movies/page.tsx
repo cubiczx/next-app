@@ -3,7 +3,17 @@ import Link from "next/link";
 import { API_BASE_URL } from "@/lib/config";
 import { slugify } from "@/lib/utils";
 import Image from "next/image";
+import type { Metadata } from "next";
 import "./movies.scss";
+
+export const metadata: Metadata = {
+  title: "Movies Catalog",
+  description: "Browse our collection of amazing films. Discover new movies with detailed information and stunning visuals.",
+  openGraph: {
+    title: "Movies Catalog | Next.js Movies App",
+    description: "Browse our collection of amazing films with detailed information.",
+  },
+};
 
 type Movie = {
   id: string;

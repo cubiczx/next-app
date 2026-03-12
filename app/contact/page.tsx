@@ -1,5 +1,15 @@
 import Menu from "../Menu";
+import type { Metadata } from "next";
 import "./contact.scss";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Xavier Palacín Ayuso. Send a message or connect via email and GitHub.",
+  openGraph: {
+    title: "Contact | Next.js Movies App",
+    description: "Get in touch with Xavier Palacín Ayuso. Send a message or connect via email and GitHub.",
+  },
+};
 
 export default function Contact() {
   return (

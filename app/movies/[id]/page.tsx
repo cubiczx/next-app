@@ -3,6 +3,7 @@ import { API_BASE_URL } from "@/lib/config";
 import { slugify } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import "./movie-detail.scss";
 
 type Movie = {
@@ -19,6 +20,47 @@ async function getMovies(): Promise<Movie[]> {
     throw new Error('Failed to fetch movies');
   }
   return res.json();
+}
+
+// Genera metadata dinámico para cada película
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const movies = await getMovies();
+  const movie = movies.find(m => slugify(m.name) === id);
+
+  if (!movie) {
+    return {
+      title: "Movie Not Found",
+      description: "The requested movie could not be found.",
+    };
+  }
+
+  return {
+    title: movie.name,
+    description: `Watch ${movie.name} - Released ${new Date(movie.createdAt).getFullYear()}. Discover detailed information about this amazing film.`,
+    openGraph: {
+      title: `${movie.name} | Next.js Movies App`,
+      description: `Watch ${movie.name} - Released ${new Date(movie.createdAt).getFullYear()}`,
+      images: [
+        {
+          url: movie.avatar,
+          width: 300,
+          height: 450,
+          alt: movie.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: movie.name,
+      description: `Watch ${movie.name} - Released ${new Date(movie.createdAt).getFullYear()}`,
+      images: [movie.avatar],
+    },
+  };
 }
 
 // Genera los parámetros estáticos en build time
