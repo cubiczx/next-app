@@ -113,7 +113,7 @@ Componentes del servidor con fetch de datos asíncrono:
 ```tsx
 export default async function Movies() {
   const movies = await getMovies(); // Fetch en el servidor
-  
+
   return (
     <div className="movies-grid">
       {movies.map((movie) => (
@@ -191,11 +191,11 @@ Estilos modulares con Sass y efectos avanzados:
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  
+
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    
+
     .overlay {
       opacity: 1;
     }
