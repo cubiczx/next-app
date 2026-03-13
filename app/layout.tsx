@@ -33,12 +33,21 @@ export const metadata: Metadata = {
     title: "Next.js Movies App | Modern Movie Catalog",
     description: "Modern movie catalog with Next.js 16, App Router, SSG and streaming service design",
     siteName: "Next.js Movies App",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Next.js Movies App Preview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Next.js Movies App | Modern Movie Catalog",
     description: "Modern movie catalog with Next.js 16, App Router, SSG and streaming service design",
     creator: "@cubiczx",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
