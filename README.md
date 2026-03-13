@@ -362,7 +362,7 @@ NEXT_PUBLIC_API_URL=https://tu-api.mockapi.io/movies
 
 ## 🌐 Demo
 
-**Aplicación en producción**: [https://jolly-squirrel-be1021.netlify.app/](https://jolly-squirrel-be1021.netlify.app/)
+**Aplicación en producción**: [https://next-app-cubiczx.netlify.app/](https://next-app-cubiczx.netlify.app/)
 
 Desplegada automáticamente en Netlify con deploy continuo desde GitHub.
 

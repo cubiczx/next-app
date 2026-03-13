@@ -22,14 +22,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Xavier Palacín Ayuso", url: "https://github.com/cubiczx" }],
   creator: "Xavier Palacín Ayuso",
   publisher: "Xavier Palacín Ayuso",
-  metadataBase: new URL("https://jolly-squirrel-be1021.netlify.app"),
+  metadataBase: new URL("https://next-app-cubiczx.netlify.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://jolly-squirrel-be1021.netlify.app",
+    url: "https://next-app-cubiczx.netlify.app",
     title: "Next.js Movies App | Modern Movie Catalog",
     description: "Modern movie catalog with Next.js 16, App Router, SSG and streaming service design",
     siteName: "Next.js Movies App",
