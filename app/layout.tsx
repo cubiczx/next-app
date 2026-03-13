@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     siteName: "Next.js Movies App",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "/og-image.jpg",
+        width: 1000,
+        height: 734,
         alt: "Next.js Movies App Preview",
       },
     ],
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "Next.js Movies App | Modern Movie Catalog",
     description: "Modern movie catalog with Next.js 16, App Router, SSG and streaming service design",
     creator: "@cubiczx",
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
