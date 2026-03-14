@@ -8,6 +8,10 @@
     "email": "cubiczx@hotmail.com",
     "url": "https://github.com/cubiczx"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cubiczx/next-app"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
