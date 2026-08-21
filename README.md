@@ -1,5 +1,7 @@
 # Next.js Movies App 🎬
 
+**🌐 [Demo en vivo](https://next-app-cubiczx.netlify.app/)**
+
 Aplicación moderna de películas con diseño tipo streaming service, utilizando Next.js 16 App Router, rutas dinámicas con slugs, y exportación estática para deployment optimizado.
 
 ## 📋 Descripción
